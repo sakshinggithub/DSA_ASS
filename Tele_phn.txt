@@ -1,0 +1,71 @@
+size=int(input("Enter Size of the Table: "))
+
+hash_table=[-1]*size
+
+def linearprob(tele_no):
+    for i in range(size):
+   	 index=(tele_no+i)%size
+   	 if(hash_table[index]==-1):
+   		 hash_table[index]=tele_no
+   		 print("Record Inserted")
+   		 break
+    else:
+   	 print("Hash Table is Full")
+   		 
+   		 
+def quadricprob(tele_no):
+    for i in range(size):
+   	 index=(tele_no+i*i)%size
+   	 if(hash_table[index]==-1):
+   		 hash_table[index]=tele_no
+   		 print("Record Inserted")
+   		 break
+    else:
+   	 print("Hash Table is Full")
+   		 
+def search(tele_no):
+    cnt=1
+    for i in range(size):
+   	 index=(tele_no*i)%size
+   	 if(hash_table[index]==tele_no):
+   		 print("record found at index: ",index)
+   		 print("record is: ",hash_table[index])
+   		 print("No.of Comparisions : ",cnt)
+   		 break
+   	 
+   	 else:
+   		 cnt+=1
+    else:
+   	 print("Record Not Found")
+
+def display():
+    print("-----------------------HASH TABLE-------------------------")
+    for i in range(size):
+   	 print(i,"--------->",hash_table[i])
+   	 
+   	 
+n=int(input("Enter No.of Records :"))
+
+while(True):
+    print("1)Insert using Linear Probing\n2)Insert using Quadric Probing\n3)Search\n4)Display\n5)Exit")
+    opt=int(input("Enter Your Choice:"))
+    
+    if(opt==1):
+   	 for i in range(n):
+   		 a=int(input("Enter the No:"))
+   		 linearprob(a)
+   		 
+    elif(opt==2):
+   	 for i in range(n):
+   		 a=int(input("Enter The No:"))
+   		 quadricprob(a)
+   		 
+    elif(opt==3):
+   	 a=int(input("Enter The No to Search "))
+   	 search(a)
+   	 
+    elif(opt==4):
+   	 display();
+    
+    elif(opt==5):
+   	 break
